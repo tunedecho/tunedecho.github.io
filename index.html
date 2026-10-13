@@ -129,6 +129,63 @@ h3{font-size:1.75rem;line-height:1.1}
 .soon-label{font-family:var(--cond);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
 .soon p{color:var(--muted)}
 
+/* Riffing on the problem: one block, four takes, switched by tabs */
+.pb-turn{margin-top:clamp(2rem,5vw,3rem);display:grid;gap:.9rem;max-width:44rem}
+.pb-turn .mini{display:flex;gap:.3rem;width:9rem}
+.pb-turn .mini i{flex:1;height:4px;border-radius:999px;background:var(--ink)}
+.pb-turn .mini i:nth-child(1){background:var(--pink)} .pb-turn .mini i:nth-child(2){background:var(--orange)} .pb-turn .mini i:nth-child(3){background:var(--yellow)}
+.pb-turn .mini i:nth-child(4){background:var(--green)} .pb-turn .mini i:nth-child(5){background:var(--blue)} .pb-turn .mini i:nth-child(6){background:var(--purple)}
+.pb-turn .big{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.15;color:var(--ink);text-wrap:balance}
+.pb-turn p:not(.big){color:var(--muted)}
+
+/* A: essay */
+.pb-essay .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.25rem clamp(2rem,5vw,4rem)}
+.pb-essay .cols p{color:var(--muted);max-width:var(--measure)}
+
+/* B: sound familiar */
+.pb-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:1.1rem 2.5rem}
+.pb-list li{display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:start;color:var(--text);font-size:1.05rem;line-height:1.5;padding-top:1rem;border-top:1px solid var(--rule-soft)}
+.pb-list li i{display:block;width:.5rem;height:1.25rem;border-radius:999px;margin-top:.15rem}
+
+/* C: before and after */
+.pb-vs{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--rule)}
+.pb-vs .h{font-family:var(--cond);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;padding:1rem 0 .75rem;color:var(--muted)}
+.pb-vs .h.own{color:var(--ink)}
+.pb-vs .c{padding:.9rem 1.5rem .9rem 0;border-top:1px solid var(--rule-soft);min-width:0}
+.pb-vs .c.rent{color:var(--muted)}
+.pb-vs .c.own{color:var(--ink);font-weight:500;padding-left:1.5rem;border-left:1.5px solid var(--ink)}
+.pb-vs .h.own{padding-left:1.5rem;border-left:1.5px solid var(--ink)}
+@media (max-width:40rem){ .pb-vs .c,.pb-vs .h{font-size:.95rem} .pb-vs .c.own,.pb-vs .h.own{padding-left:.9rem} .pb-vs .c{padding-right:.9rem} }
+
+/* D: the cycle */
+.pb-cycle{position:relative}
+.pb-cycle ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem;counter-reset:step;position:relative}
+.pb-cycle ol::before{content:"";position:absolute;left:.4rem;right:.4rem;top:.4rem;height:1.5px;background:var(--rule)}
+.pb-cycle li{position:relative;min-width:0}
+.pb-cycle li .dot{display:block;width:.8rem;height:.8rem;border-radius:50%;position:relative;margin-bottom:1.1rem;box-shadow:0 0 0 4px var(--bg)}
+.pb-cycle li .n{font-family:var(--cond);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pb-cycle li h3{font-size:1.35rem;line-height:1.15;margin-top:.2rem}
+.pb-cycle li p{color:var(--muted);font-size:.95rem;margin-top:.45rem}
+.pb-cycle .loop{display:block;width:100%;height:auto;margin-top:1.25rem;color:var(--muted);overflow:visible}
+.pb-cycle .loop-label{font-family:var(--cond);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:.25rem}
+@media (max-width:52rem){
+  .pb-cycle ol{grid-template-columns:1fr;gap:1.25rem;padding-left:1.75rem}
+  .pb-cycle ol::before{left:.4rem;right:auto;top:.4rem;bottom:.4rem;width:1.5px;height:auto}
+  .pb-cycle li .dot{position:absolute;left:-1.75rem;top:.15rem;margin:0}
+  .pb-cycle .loop{display:none}
+  .pb-cycle .loop-label{text-align:left;padding-left:1.75rem}
+}
+.riff-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0 clamp(2rem,4vw,2.75rem);padding:0}
+.riff-tabs button{font-family:var(--cond);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1rem;border-radius:999px;border:1.5px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer}
+.riff-tabs button:hover{border-color:var(--ink);color:var(--ink)}
+.riff-tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.riff-panel + .riff-panel{margin-top:clamp(3rem,6vw,4.5rem)}
+.riff.js .riff-panel + .riff-panel{margin-top:0}
+.riff.js .riff-panel{animation:riff-in .35s ease-out}
+@keyframes riff-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){ .riff.js .riff-panel{animation:none} }
+.riff-tabs[hidden]{display:none}
+
 /* About */
 .about p{color:var(--muted);max-width:var(--measure)}
 .about p + p{margin-top:1rem}
@@ -207,6 +264,77 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
       <canvas class="scene scene-lens" aria-hidden="true"></canvas>
     </div>
    </div>
+  </section>
+
+  <div class="wrap"><div class="rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+
+  <section id="problem" class="wrap riff">
+    <p class="eyebrow">Riffing on the problem</p>
+    <div class="riff-tabs" role="tablist" aria-label="Takes on the problem" hidden>
+      <button type="button" role="tab" id="riff-tab-essay" aria-controls="riff-essay" aria-selected="true" tabindex="0">Generic software</button>
+      <button type="button" role="tab" id="riff-tab-familiar" aria-controls="riff-familiar" aria-selected="false" tabindex="-1">Sound familiar?</button>
+      <button type="button" role="tab" id="riff-tab-contrast" aria-controls="riff-contrast" aria-selected="false" tabindex="-1">Before and after</button>
+      <button type="button" role="tab" id="riff-tab-spiral" aria-controls="riff-spiral" aria-selected="false" tabindex="-1">The spiral</button>
+    </div>
+    <div class="riff-panel pb-essay" id="riff-essay" role="tabpanel" aria-labelledby="riff-tab-essay" tabindex="0">
+  <h2>Mission-driven institutions are running on generic software.</h2>
+  <div class="cols">
+    <p>Universities, publishers, and nonprofits pay every year for enterprise systems built for everyone and fitted to no one. The modules that would fit local needs cost extra, so they never get bought. Support is thin and far away. When the software can't do what we need, we change how we work to suit the software.</p>
+    <p>The gaps get filled by hand. Databases that don't talk to each other. A private layer of spreadsheets in every office. Whole processes that will never get a custom tool because there is no budget for one. Each new subscription adds another layer, and the search for the next cheaper option starts again.</p>
+  </div>
+  <div class="pb-turn">
+    <span class="mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <p class="big">There is another way. Build the capacity to write and run your own systems, shaped to your processes and answerable to your mission.</p>
+  </div>
+    </div>
+    <div class="riff-panel" id="riff-familiar" role="tabpanel" aria-labelledby="riff-tab-familiar" tabindex="0">
+  <h2>Sound familiar?</h2>
+  <ul class="pb-list">
+    <li><i style="background:var(--pink)"></i><span>The system does most of what you need. The rest is a module you can't afford.</span></li>
+    <li><i style="background:var(--orange)"></i><span>Two databases hold the same records and never agree.</span></li>
+    <li><i style="background:var(--yellow)"></i><span>Every office keeps its own spreadsheet to cover what the system can't do.</span></li>
+    <li><i style="background:var(--green)"></i><span>A whole process runs on email and memory, because no vendor will ever build for it.</span></li>
+    <li><i style="background:var(--blue)"></i><span>Support means a ticket number and a long wait.</span></li>
+    <li><i style="background:var(--purple)"></i><span>Every renewal brings a cheaper option with less help behind it.</span></li>
+  </ul>
+  <div class="pb-turn">
+    <span class="mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <p class="big">It doesn't have to work this way.</p>
+    <p>When an institution can write and run its own systems, the software bends to the work. Tuned Echo helps you build that capacity, one system at a time, starting with the process that hurts most.</p>
+  </div>
+    </div>
+    <div class="riff-panel" id="riff-contrast" role="tabpanel" aria-labelledby="riff-tab-contrast" tabindex="0">
+  <h2>Stop contorting your work to fit the software.</h2>
+  <p class="intro">Generic enterprise platforms are built for every institution and fitted to none. Owning your systems changes what is possible.</p>
+  <div class="pb-vs" role="table" aria-label="Rented systems compared with systems you own">
+    <div class="h" role="columnheader">Rented, generic systems</div><div class="h own" role="columnheader">Systems you own</div>
+    <div class="c rent" role="cell">Built for every institution, fitted to none</div><div class="c own" role="cell">Shaped to your processes</div>
+    <div class="c rent" role="cell">The module you need is priced out of reach</div><div class="c own" role="cell">Features added when you need them</div>
+    <div class="c rent" role="cell">Databases that don't talk to each other</div><div class="c own" role="cell">One record every office can trust</div>
+    <div class="c rent" role="cell">Spreadsheets patching every gap</div><div class="c own" role="cell">Tools that close the gaps directly</div>
+    <div class="c rent" role="cell">Whole processes left with no software at all</div><div class="c own" role="cell">Small, purpose-built tools for the work no vendor will touch</div>
+    <div class="c rent" role="cell">Support from far away, if at all</div><div class="c own" role="cell">Support from people who know your work</div>
+    <div class="c rent" role="cell">Each renewal, a cheaper option with less behind it</div><div class="c own" role="cell">Capacity that grows every year</div>
+  </div>
+    </div>
+    <div class="riff-panel pb-cycle" id="riff-spiral" role="tabpanel" aria-labelledby="riff-tab-spiral" tabindex="0">
+  <h2>The subscription spiral.</h2>
+  <p class="intro">Mission-driven institutions keep paying for software that doesn't fit, and the mess grows with every renewal.</p>
+  <ol>
+    <li><span class="dot" style="background:var(--pink)"></span><span class="n">Step one</span><h3>Buy the platform</h3><p>A generic enterprise system, built for every institution and fitted to none.</p></li>
+    <li><span class="dot" style="background:var(--orange)"></span><span class="n">Step two</span><h3>Hit the walls</h3><p>The module that would fit your needs costs extra, so it never gets bought.</p></li>
+    <li><span class="dot" style="background:var(--yellow)"></span><span class="n">Step three</span><h3>Patch the gaps</h3><p>Every office builds its own spreadsheets to cover what the system can't do.</p></li>
+    <li><span class="dot" style="background:var(--green)"></span><span class="n">Step four</span><h3>Lose the thread</h3><p>Databases drift apart, and whole processes run on email and memory.</p></li>
+    <li><span class="dot" style="background:var(--blue)"></span><span class="n">Step five</span><h3>Switch again</h3><p>The next renewal brings a cheaper option with even less support.</p></li>
+  </ol>
+  <svg class="loop" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><path d="M960 6 C 960 50, 900 50, 860 50 L 140 50 C 100 50, 40 50, 40 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 6" vector-effect="non-scaling-stroke"/><path d="M32 22 L40 8 L48 22" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>
+  <p class="loop-label">And around again</p>
+  <div class="pb-turn">
+    <span class="mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <p class="big">Break the cycle by building the capacity to write and run your own systems.</p>
+    <p>Conform the software to your processes, so it meets your needs and supports your mission.</p>
+  </div>
+    </div>
   </section>
 
   <div class="wrap"><div class="rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
@@ -309,6 +437,29 @@ document.addEventListener('DOMContentLoaded', function () {
   box.querySelector('.seal-btn').addEventListener('click', function () { if (!busy()) lens.play(); });
   window.addEventListener('resize', function () { if (!busy()) { big.resize(); lens.resize(); } });
 });
+</script>
+<script>
+/* Riffing on the problem: tabs switch between four takes. Without script, all four show in sequence. */
+(function () {
+  var root = document.querySelector('.riff'); if (!root) return;
+  var list = root.querySelector('.riff-tabs'), tabs = [].slice.call(list.querySelectorAll('[role=tab]'));
+  root.classList.add('js'); list.hidden = false;
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t, false); });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, j = k === 'ArrowRight' ? i + 1 : k === 'ArrowLeft' ? i - 1 : k === 'Home' ? 0 : k === 'End' ? tabs.length - 1 : null;
+      if (j === null) return; e.preventDefault(); select(tabs[(j + tabs.length) % tabs.length], true);
+    });
+  });
+  select(tabs[0], false);
+})();
 </script>
 </body>
 </html>
