@@ -55,16 +55,19 @@ header{padding-block:1.5rem}
 .hero .wordmark{max-width:100%}
 @media (max-width:48rem){ .hero-grid{grid-template-columns:1fr} .hero-seal{order:-1;width:9.5rem} }
 
-/* Animated seal: the fork is struck, the city behind it answers */
+/* Animated seal: the fork is struck and the camera flies from a Brooklyn skyline out to the whole Earth and back */
 .hero-seal{position:relative;width:clamp(13rem,24vw,19rem);aspect-ratio:1;max-width:100%}
 .hero-seal .seal{position:relative;width:100%;height:auto;display:block;color:var(--ink);overflow:visible}
-.hero-seal .skyline{position:absolute;left:50%;top:50%;width:190%;height:130%;transform:translate(-50%,-50%);opacity:0;color:var(--ink);pointer-events:none;
-  -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent)}
+.hero-seal .scene{position:absolute;pointer-events:none;display:block}
+.hero-seal .scene-wide{left:50%;top:50%;width:210%;height:150%;transform:translate(-50%,-50%);z-index:0;
+  -webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
+.hero-seal .scene-lens{inset:0;width:100%;height:100%;z-index:2}
+.seal-btn{appearance:none;-webkit-appearance:none;background:none;border:0;padding:0;margin:0;display:block;width:100%;color:inherit;cursor:pointer;border-radius:50%;position:relative;z-index:1}
+.seal-btn:focus-visible{outline:2px solid var(--blue);outline-offset:6px}
 .seal .tine-l,.seal .tine-r{transform-box:view-box;transform-origin:200px 220px}
 .seal .fork,.seal .ring-outer,.seal .ripple,.seal .wave{transform-box:view-box;transform-origin:200px 200px}
 .seal .spark{transform-box:view-box;transform-origin:200px 284px;opacity:0}
 .seal .ripple{opacity:0}
-.struck .skyline{animation:te-layer 3.4s ease-in-out .2s both}
 .struck .seal .fork{animation:te-jolt .22s ease-out both}
 .struck .seal .tine-l{animation:te-tineL 1.7s linear both}
 .struck .seal .tine-r{animation:te-tineR 1.7s linear both}
@@ -73,22 +76,15 @@ header{padding-block:1.5rem}
 .struck .seal .ring-outer{animation:te-ring .55s ease-out both}
 .struck .seal .ripple{animation:te-ripple 2s ease-out both;animation-delay:calc(var(--i) * .24s)}
 .struck .seal .spark{animation:te-spark .5s ease-out both}
-.skyline .bldg{transform-box:fill-box;transform-origin:bottom center;transform:translateY(10px) scaleY(.96)}
-.struck .skyline .bldg{animation:te-rise .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d)}
-.skyline .lit{opacity:0}
-.struck .skyline .lit{animation:te-light 2.1s ease-out both;animation-delay:var(--d)}
-@keyframes te-layer{0%{opacity:0}16%{opacity:1}72%{opacity:1}100%{opacity:0}}
 @keyframes te-jolt{0%{transform:translateY(0)}35%{transform:translateY(4px)}100%{transform:translateY(0)}}
 @keyframes te-wave{0%{transform:translateX(0);opacity:1}12%{transform:translateX(-5px);opacity:.25}24%{transform:translateX(0);opacity:1}36%{transform:translateX(-4px);opacity:.35}48%{transform:translateX(0);opacity:1}62%{transform:translateX(-2px);opacity:.6}100%{transform:translateX(0);opacity:1}}
 @keyframes te-waveR{0%{transform:translateX(0);opacity:1}12%{transform:translateX(5px);opacity:.25}24%{transform:translateX(0);opacity:1}36%{transform:translateX(4px);opacity:.35}48%{transform:translateX(0);opacity:1}62%{transform:translateX(2px);opacity:.6}100%{transform:translateX(0);opacity:1}}
 @keyframes te-ring{0%{transform:scale(1)}40%{transform:scale(1.025)}100%{transform:scale(1)}}
 @keyframes te-ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.6);opacity:0}}
 @keyframes te-spark{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
-@keyframes te-rise{0%{transform:translateY(10px) scaleY(.96)}100%{transform:translateY(0) scaleY(1)}}
-@keyframes te-light{0%{opacity:0}14%{opacity:1}55%{opacity:1}100%{opacity:0}}
 @keyframes te-tineL{0.0%{transform:rotate(0.00deg)}3.8%{transform:rotate(-1.68deg)}7.7%{transform:rotate(1.49deg)}11.5%{transform:rotate(-1.31deg)}15.4%{transform:rotate(1.16deg)}19.2%{transform:rotate(-1.03deg)}23.1%{transform:rotate(0.91deg)}26.9%{transform:rotate(-0.80deg)}30.8%{transform:rotate(0.71deg)}34.6%{transform:rotate(-0.63deg)}38.5%{transform:rotate(0.55deg)}42.3%{transform:rotate(-0.49deg)}46.2%{transform:rotate(0.43deg)}50.0%{transform:rotate(-0.38deg)}53.8%{transform:rotate(0.34deg)}57.7%{transform:rotate(-0.30deg)}61.5%{transform:rotate(0.27deg)}65.4%{transform:rotate(-0.23deg)}69.2%{transform:rotate(0.21deg)}73.1%{transform:rotate(-0.18deg)}76.9%{transform:rotate(0.16deg)}80.8%{transform:rotate(-0.14deg)}84.6%{transform:rotate(0.13deg)}88.5%{transform:rotate(-0.11deg)}92.3%{transform:rotate(0.10deg)}96.2%{transform:rotate(-0.09deg)}100.0%{transform:rotate(0.00deg)}}
 @keyframes te-tineR{0.0%{transform:rotate(0.00deg)}3.8%{transform:rotate(1.68deg)}7.7%{transform:rotate(-1.49deg)}11.5%{transform:rotate(1.31deg)}15.4%{transform:rotate(-1.16deg)}19.2%{transform:rotate(1.03deg)}23.1%{transform:rotate(-0.91deg)}26.9%{transform:rotate(0.80deg)}30.8%{transform:rotate(-0.71deg)}34.6%{transform:rotate(0.63deg)}38.5%{transform:rotate(-0.55deg)}42.3%{transform:rotate(0.49deg)}46.2%{transform:rotate(-0.43deg)}50.0%{transform:rotate(0.38deg)}53.8%{transform:rotate(-0.34deg)}57.7%{transform:rotate(0.30deg)}61.5%{transform:rotate(-0.27deg)}65.4%{transform:rotate(0.23deg)}69.2%{transform:rotate(-0.21deg)}73.1%{transform:rotate(0.18deg)}76.9%{transform:rotate(-0.16deg)}80.8%{transform:rotate(0.14deg)}84.6%{transform:rotate(-0.13deg)}88.5%{transform:rotate(0.11deg)}92.3%{transform:rotate(-0.10deg)}96.2%{transform:rotate(0.09deg)}100.0%{transform:rotate(0.00deg)}}
-@media (prefers-reduced-motion: reduce){ .struck .skyline,.struck .seal *,.struck .skyline *{animation:none !important} }
+@media (prefers-reduced-motion: reduce){ .struck .seal *{animation:none !important} }
 .tagline{font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:500;color:var(--text);margin-top:2.25rem;max-width:34ch;line-height:1.3;text-wrap:balance}
 .lede{color:var(--muted);max-width:var(--measure);margin-top:1.25rem}
 .cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.25rem}
@@ -173,7 +169,8 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
     </div>
     </div>
     <div class="hero-seal" id="heroSeal">
-      <svg class="skyline" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
+      <canvas class="scene scene-wide" aria-hidden="true"></canvas>
+      <button class="seal-btn" type="button" aria-label="Strike the tuning fork">
       <svg class="seal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="sealTitle">
         <title id="sealTitle">Tuned Echo Systems seal: a tuning fork ringed by the words Tuned Echo Systems, Mission-built software, Brooklyn, NY</title>
         <g aria-hidden="true">
@@ -188,6 +185,7 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
         <text font-family="Oswald, 'Arial Narrow', 'Helvetica Neue', sans-serif" font-size="25" font-weight="500" letter-spacing="3" fill="currentColor">
           <textPath href="#sealArc" startOffset="0" textLength="990" lengthAdjust="spacing">· TUNED ECHO SYSTEMS · MISSION-BUILT SOFTWARE · BROOKLYN, NY </textPath>
         </text>
+        <g class="core">
         <g class="fork">
           <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round">
             <path class="tine-l" d="M172,120 V192 a28,28 0 0 0 28,28"/>
@@ -203,7 +201,10 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
           <path class="wave wave-r" d="M250,150 c12,16 12,32 0,48 c-12,16 -12,32 0,48"/>
           <path class="wave wave-r" d="M270,142 c14,20 14,40 0,60 c-14,20 -14,40 0,60"/>
         </g>
+        </g>
       </svg>
+      </button>
+      <canvas class="scene scene-lens" aria-hidden="true"></canvas>
     </div>
    </div>
   </section>
@@ -287,35 +288,27 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
   <span>© 2026 Tuned Echo Systems LLC</span>
   <span>Tuning your systems to echo your mission</span>
 </footer>
+<script src="assets/te-geo.js" defer></script>
+<script src="assets/te-flight.js" defer></script>
 <script>
-(function(){
-  var box=document.getElementById('heroSeal');
-  if(!box||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var svg=box.querySelector('.skyline'),NS='http://www.w3.org/2000/svg';
-  var C=['#d9738f','#e8915a','#e2b93b','#4fae8f','#4f8fcf','#8a6fc9'],CX=320,CY=200,seed=7;
-  function r(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}
-  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
-  function dist(x,y){return Math.hypot(x-CX,y-CY);}
-  var x=-6;
-  while(x<646){
-    var w=16+Math.floor(r()*28),h=70+Math.floor(r()*250),col=C[Math.floor(r()*6)];
-    var b=el('g',{'class':'bldg'});b.style.setProperty('--d',(dist(x+w/2,400-h/2)/900).toFixed(2)+'s');
-    b.appendChild(el('rect',{x:x,y:400-h,width:w,height:h,fill:'currentColor',opacity:.08}));
-    for(var wy=400-h+8;wy<392;wy+=12){for(var wx=x+5;wx<x+w-4;wx+=8){if(r()<.55){
-      var win=el('rect',{x:wx,y:wy,width:3.5,height:5,fill:col,'class':'lit'});
-      win.style.setProperty('--d',(.25+dist(wx,wy)/460+r()*.12).toFixed(2)+'s');b.appendChild(win);}}}
-    svg.appendChild(b);x+=w+2+Math.floor(r()*6);
+/* Hero seal: the wide flight (or the night flight in dark mode) plays once after load;
+   each click on the seal plays the flight inside the seal's lens. */
+document.addEventListener('DOMContentLoaded', function () {
+  var box = document.getElementById('heroSeal');
+  if (!box || !window.TEFlight) return;
+  var big = new TEFlight(box, { mode: 'wide', canvas: box.querySelector('.scene-wide') });
+  var lens = new TEFlight(box, { mode: 'lens', canvas: box.querySelector('.scene-lens') });
+  function busy() { return big.playing || lens.playing; }
+  function isDark() {
+    var h = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim().replace('#', ''), n = parseInt(h, 16);
+    return (0.2126 * (n >> 16 & 255) + 0.7152 * (n >> 8 & 255) + 0.0722 * (n & 255)) / 255 < 0.4;
   }
-  var visible=true,timer=null;
-  function strike(){
-    if(!visible||document.hidden)return;
-    box.classList.remove('struck');void box.offsetWidth;box.classList.add('struck');
-    clearTimeout(timer);timer=setTimeout(function(){box.classList.remove('struck');},3900);
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setTimeout(function () { if (!busy()) { big.mode = isDark() ? 'night' : 'wide'; big.play(); } }, 900);
   }
-  if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;}).observe(box);}
-  setTimeout(strike,900);
-  setInterval(strike,15000);
-})();
+  box.querySelector('.seal-btn').addEventListener('click', function () { if (!busy()) lens.play(); });
+  window.addEventListener('resize', function () { if (!busy()) { big.resize(); lens.resize(); } });
+});
 </script>
 </body>
 </html>
