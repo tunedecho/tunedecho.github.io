@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="sealTitle">
+  <title id="sealTitle">Tuned Echo Systems seal: a tuning fork ringed by the words Tuned Echo Systems, Mission-built software, Brooklyn, NY</title>
+  <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="7"/>
+  <circle cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="5"/>
+  <defs><path id="sealArc" d="M200,200 m-158,0 a158,158 0 1,1 316,0 a158,158 0 1,1 -316,0"/></defs>
+  <text font-family="Oswald, 'Arial Narrow', 'Helvetica Neue', sans-serif" font-size="25" font-weight="500" letter-spacing="3" fill="currentColor">
+    <textPath href="#sealArc" startOffset="0" textLength="990" lengthAdjust="spacing">· TUNED ECHO SYSTEMS · MISSION-BUILT SOFTWARE · BROOKLYN, NY </textPath>
+  </text>
+  <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round">
+    <path d="M172,120 V192 a28,28 0 0 0 56,0 V120"/>
+    <path d="M200,220 V282"/>
+  </g>
+  <circle cx="200" cy="284" r="11" fill="currentColor"/>
+  <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round">
+    <path d="M150,150 c-12,16 -12,32 0,48 c12,16 12,32 0,48"/>
+    <path d="M130,142 c-14,20 -14,40 0,60 c14,20 14,40 0,60"/>
+    <path d="M250,150 c12,16 12,32 0,48 c-12,16 -12,32 0,48"/>
+    <path d="M270,142 c14,20 14,40 0,60 c-14,20 -14,40 0,60"/>
+  </g>
+</svg>

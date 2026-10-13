@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tuned Echo Systems</title>
+<meta name="description" content="Tuned Echo Systems builds mission-fit software for universities, publishers, and research organizations, and teaches the methods to build it yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oswald:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+<style>
+/* Variation C, "Signal": the motto is the hero, hairline grid, condensed caps labels from the seal, a vertical spectrum keyed to the method. */
+:root{
+  --bg:#fbf7ef; --paper:#f6f2ea; --ink:#1f2329; --text:#2b2f36; --muted:#53575d; --rule:#1f2329; --hair:#d9d3c7;
+  --pink:#d9738f; --orange:#e8915a; --yellow:#e2b93b; --green:#4fae8f; --blue:#4f8fcf; --purple:#8a6fc9;
+  --serif:'Instrument Serif','Iowan Old Style',Georgia,serif;
+  --sans:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --cond:'Oswald','Arial Narrow','Helvetica Neue',sans-serif;
+  --measure:36rem;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#1f2329; --paper:#272b34; --ink:#f6f2ea; --text:#e8e3d9; --muted:#b4aea3; --rule:#f6f2ea; --hair:#3d424c; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#1f2329; --paper:#272b34; --ink:#f6f2ea; --text:#e8e3d9; --muted:#b4aea3; --rule:#f6f2ea; --hair:#3d424c; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:74rem;margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);text-wrap:balance;margin:0}
+p{margin:0}
+em{font-style:italic}
+.label{font-family:var(--cond);font-size:.8rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* Header */
+header{border-bottom:1.5px solid var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:1.1rem}
+.brand{display:inline-flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--ink)}
+.brand .wm{font-family:var(--serif);font-size:1.7rem;line-height:1}
+.brand .bars{display:flex;gap:.2rem}
+.brand .bars i{width:.9rem;height:.3rem;border-radius:999px;background:var(--ink)}
+.bars i:nth-child(1){background:var(--pink)} .bars i:nth-child(2){background:var(--orange)} .bars i:nth-child(3){background:var(--yellow)}
+.bars i:nth-child(4){background:var(--green)} .bars i:nth-child(5){background:var(--blue)} .bars i:nth-child(6){background:var(--purple)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.5rem;flex-wrap:wrap}
+.nav ul a{font-family:var(--cond);font-size:.8rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.nav ul a:hover{color:var(--ink)}
+
+/* Hero: the motto */
+.hero{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:stretch;padding-block:clamp(3rem,8vw,6rem)}
+.hero h1{font-size:clamp(2.8rem,7.2vw,6.2rem);line-height:1.02;letter-spacing:-.01em;max-width:14ch}
+.hero .sub{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2rem;margin-top:2.5rem;max-width:56rem}
+.hero .sub p{color:var(--muted)}
+.hero .sub .label{display:block;margin-bottom:.4rem;color:var(--ink)}
+.spectrum{display:flex;flex-direction:column;gap:.45rem;width:.75rem}
+.spectrum i{flex:1;border-radius:999px;background:var(--ink)}
+.spectrum i:nth-child(1){background:var(--pink)} .spectrum i:nth-child(2){background:var(--orange)} .spectrum i:nth-child(3){background:var(--yellow)}
+.spectrum i:nth-child(4){background:var(--green)} .spectrum i:nth-child(5){background:var(--blue)} .spectrum i:nth-child(6){background:var(--purple)}
+@media (max-width:40rem){ .hero{grid-template-columns:1fr} .spectrum{flex-direction:row;width:auto;height:.5rem;order:-1} }
+
+/* Sections */
+section{border-top:1.5px solid var(--rule);padding-block:clamp(2.5rem,6vw,4.5rem)}
+.grid{display:grid;grid-template-columns:minmax(9rem,14rem) 1fr;gap:1.5rem 3rem}
+@media (max-width:40rem){ .grid{grid-template-columns:1fr} }
+h2{font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.08}
+.lead{color:var(--muted);max-width:var(--measure);margin-top:.75rem}
+
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2.5rem;margin-top:2rem}
+.pair h3{font-size:2.1rem;line-height:1}
+.pair p{color:var(--muted);margin-top:.75rem;max-width:var(--measure)}
+.pair .label{display:block;margin-bottom:.6rem}
+
+.method{list-style:none;margin:2rem 0 0;padding:0}
+.method li{display:grid;grid-template-columns:.4rem minmax(6rem,9rem) 1fr;gap:1.25rem 1.5rem;padding:1.25rem 0;border-top:1px solid var(--hair);min-width:0}
+.method li:first-child{border-top:0;padding-top:0}
+.method i{display:block;border-radius:999px;align-self:stretch}
+.method h3{font-size:1.9rem;line-height:1}
+.method .label{display:block;margin-top:.5rem}
+.method p{color:var(--muted);max-width:var(--measure)}
+@media (max-width:40rem){ .method li{grid-template-columns:.4rem 1fr} .method p{grid-column:2} }
+
+.principles{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0 2.5rem}
+.principles li{padding:.9rem 0;border-top:1px solid var(--hair);font-size:.975rem;color:var(--muted)}
+.principles strong{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--ink);line-height:1.15}
+
+.work{width:100%;border-collapse:collapse;margin-top:2rem}
+.work th,.work td{text-align:left;vertical-align:top;padding:1.1rem 1.25rem 1.1rem 0;border-top:1px solid var(--hair)}
+.work th{font-family:var(--cond);font-size:.8rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-top:0;padding-top:0}
+.work td.name{font-family:var(--serif);font-size:1.45rem;color:var(--ink);line-height:1.1;white-space:nowrap}
+.work td.sector{white-space:nowrap;color:var(--muted);font-size:.95rem}
+.work td.sector i{display:inline-block;width:.55rem;height:.55rem;border-radius:50%;margin-right:.5rem;vertical-align:middle}
+.work td.desc{color:var(--muted);font-size:1rem;max-width:40rem}
+.tablewrap{overflow-x:auto}
+@media (max-width:48rem){ .work td.name{white-space:normal} }
+
+.about{display:grid;grid-template-columns:1fr minmax(9rem,13rem);gap:3rem;align-items:start}
+.about p{color:var(--muted);max-width:var(--measure);margin-top:.75rem}
+.about .seal{width:100%;color:var(--ink);justify-self:end}
+@media (max-width:40rem){ .about{grid-template-columns:1fr} .about .seal{max-width:9rem;justify-self:start} }
+
+.contact .big{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.08;max-width:18ch}
+.contact .addr{margin-top:1.5rem;line-height:1.8;color:var(--muted)}
+.contact .addr b{color:var(--ink);font-weight:600}
+.placeholder{border-bottom:1px dashed var(--muted)}
+footer{border-top:1.5px solid var(--rule);padding-block:1.25rem 2.5rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav wrap" aria-label="Primary">
+    <a class="brand" href="#top"><span class="wm">Tuned <em>Echo</em></span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero wrap">
+    <div>
+      <p class="label">Tuned Echo Systems · Mission-built software · Brooklyn, NY</p>
+      <h1 style="margin-top:1.25rem">We tune your systems until they <em>echo</em> your mission.</h1>
+      <div class="sub">
+        <div><span class="label">Who we serve</span><p>Universities, publishers, and research organizations that need software shaped to their own work rather than a vendor's template.</p></div>
+        <div><span class="label">What we do</span><p>We build it, or we teach your people the methods to build and commission it themselves. Working prototypes in weeks, production systems that stay open and documented.</p></div>
+      </div>
+    </div>
+    <div class="spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <section id="services">
+    <div class="wrap grid">
+      <p class="label">Services</p>
+      <div>
+        <h2>Two ways to work with us.</h2>
+        <div class="pair">
+          <div><span class="label">Build</span><h3>We take on the project.</h3><p>A working prototype of your own workflow in weeks, then a production system that is documented, accessible, and yours to keep.</p></div>
+          <div><span class="label">Consult</span><h3>We teach the method.</h3><p>We advise universities and businesses on methods for developing software that fits. Your people learn to go from idea to plan to working prototype, and to commission software with confidence.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="wrap grid">
+      <p class="label">Method</p>
+      <div>
+        <h2>Probe, trace, tune, echo.</h2>
+        <p class="lead">Every engagement follows the same four movements, whether we are building the system or teaching your team to build it.</p>
+        <ol class="method">
+          <li><i style="background:var(--pink)"></i><div><h3>Probe</h3><span class="label">Learn the work</span></div><p>Learn how the work actually happens. We start from your real structure, your catalog, your departments, your workflow, and invent only the sensitive particulars.</p></li>
+          <li><i style="background:var(--yellow)"></i><div><h3>Trace</h3><span class="label">Plan as record</span></div><p>Write the plan as the record. Goals, assumptions, open questions, and a decision log live in a plain file that everyone can read.</p></li>
+          <li><i style="background:var(--green)"></i><div><h3>Tune</h3><span class="label">Build demo-first</span></div><p>Seeded data, one-click role switching, and a ten-minute walkthrough for the decision-maker, then adjust against real use.</p></li>
+          <li><i style="background:var(--blue)"></i><div><h3>Echo</h3><span class="label">Reflect the mission</span></div><p>Ship a system that reflects the mission. Every figure shows its arithmetic, every page meets accessibility standards, and the code stays open.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="wrap grid">
+      <p class="label">House style</p>
+      <div>
+        <h2>What you can expect from any Tuned Echo build.</h2>
+        <ul class="principles">
+          <li><strong>Real structure, invented particulars.</strong>You see your own institution in the first demo. Nothing sensitive is ever loaded.</li>
+          <li><strong>Show the arithmetic.</strong>Budgets, roll-ups, and audit logs explain where every number came from.</li>
+          <li><strong>Demo-first.</strong>Seeded data, role switching, and a scripted walkthrough with every build.</li>
+          <li><strong>Open by default.</strong>MIT licenses. JSON, Markdown, and git rather than lock-in.</li>
+          <li><strong>Small, boring stacks.</strong>Proven tools, self-hosted or static, that your staff can maintain.</li>
+          <li><strong>AI-assisted, human-directed.</strong>Built with AI coding tools under expert direction. We teach the method too.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap grid">
+      <p class="label">Working examples</p>
+      <div>
+        <h2>Prototypes that show the institution to itself.</h2>
+        <p class="lead">Each example is a working system with seeded demo data, role switching for live walkthroughs, and a scripted ten-minute demo for a named decision-maker.</p>
+        <div class="tablewrap">
+        <table class="work">
+          <thead><tr><th>System</th><th>Sector</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Assessment Hub</td><td class="sector"><i style="background:var(--blue)"></i>Higher education</td><td class="desc">Institution-wide learning outcomes assessment: curriculum maps with live gap warnings, annual reports with review workflow, and a printable accreditation evidence summary.</td></tr>
+            <tr><td class="name">Academic Budget Hub</td><td class="sector"><i style="background:var(--blue)"></i>Higher education</td><td class="desc">Department, school, and institution budgets with the arithmetic behind every figure, plus a policy lab for comparing budget models before adopting them.</td></tr>
+            <tr><td class="name">Teaching Observation Hub</td><td class="sector"><i style="background:var(--blue)"></i>Higher education</td><td class="desc">Peer teaching observations for an entire college: automatic pairings from the term schedule, forms, acknowledgments, and completion tracking.</td></tr>
+            <tr><td class="name">Proceedings Desk</td><td class="sector"><i style="background:var(--orange)"></i>Publishing</td><td class="desc">A submission and tracking system for conference proceedings, designed to replace a vendor platform with fewer screens, bulk actions, and integrity checks before publication.</td></tr>
+            <tr><td class="name">Semantic Librarian</td><td class="sector"><i style="background:var(--purple)"></i>Research</td><td class="desc">A meaning-based search library built from any document set. Documents, authors, and years share one semantic space, exported as a static web app.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap grid">
+      <p class="label">About</p>
+      <div class="about">
+        <div>
+          <h2>Built from inside the institution.</h2>
+          <p>Tuned Echo Systems is led by Matt Crump, a cognitive psychologist who studies memory, learning, and skilled performance. He is a professor and chair of Psychology at Brooklyn College, CUNY, and has built open software for academic work since 2012: R packages, open textbooks, web-based experiments, and department tools.</p>
+          <p>He runs an academic department, so he knows the problems of budgets, assessment, personnel review, and accreditation from the inside rather than as a vendor. Tuned Echo builds with AI coding tools under human direction, which is why prototypes arrive in weeks rather than months, and it teaches that method to clients.</p>
+        </div>
+        <svg class="seal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="sealTitle">
+  <title id="sealTitle">Tuned Echo Systems seal: a tuning fork ringed by the words Tuned Echo Systems, Mission-built software, Brooklyn, NY</title>
+  <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="7"/>
+  <circle cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="5"/>
+  <defs><path id="sealArc" d="M200,200 m-158,0 a158,158 0 1,1 316,0 a158,158 0 1,1 -316,0"/></defs>
+  <text font-family="Oswald, 'Arial Narrow', 'Helvetica Neue', sans-serif" font-size="25" font-weight="500" letter-spacing="3" fill="currentColor">
+    <textPath href="#sealArc" startOffset="0" textLength="990" lengthAdjust="spacing">· TUNED ECHO SYSTEMS · MISSION-BUILT SOFTWARE · BROOKLYN, NY </textPath>
+  </text>
+  <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round">
+    <path d="M172,120 V192 a28,28 0 0 0 56,0 V120"/>
+    <path d="M200,220 V282"/>
+  </g>
+  <circle cx="200" cy="284" r="11" fill="currentColor"/>
+  <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round">
+    <path d="M150,150 c-12,16 -12,32 0,48 c12,16 12,32 0,48"/>
+    <path d="M130,142 c-14,20 -14,40 0,60 c14,20 14,40 0,60"/>
+    <path d="M250,150 c12,16 12,32 0,48 c-12,16 -12,32 0,48"/>
+    <path d="M270,142 c14,20 14,40 0,60 c-14,20 -14,40 0,60"/>
+  </g>
+</svg>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap grid">
+      <p class="label">Contact</p>
+      <div>
+        <p class="big">Tell us about the system you wish you had.</p>
+        <p class="addr"><b>Tuned Echo Systems LLC</b><br>Brooklyn, New York<br><span class="placeholder">hello@tunedecho.example</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span class="label">© 2026 Tuned Echo Systems LLC</span><span class="label">We tune your systems until they echo your mission.</span></div>
+</footer>
+</body>
+</html>
