@@ -186,6 +186,35 @@ h3{font-size:1.75rem;line-height:1.1}
 @media (prefers-reduced-motion: reduce){ .riff.js .riff-panel{animation:none} }
 .riff-tabs[hidden]{display:none}
 
+/* Story: short opening on the page, full story expands in place */
+.story-text{display:grid;gap:1rem;max-width:var(--measure)}
+.story-text p{color:var(--muted)}
+.story a.cite{color:inherit;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+.story a.cite:hover{text-decoration-color:var(--ink)}
+.story-more{margin-top:1.75rem}
+.story-more summary{list-style:none;display:inline-flex;align-items:center;gap:.6rem;cursor:pointer;font-family:var(--cond);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:.6rem 1.1rem;border:1.5px solid var(--ink);border-radius:999px}
+.story-more summary::-webkit-details-marker{display:none}
+.story-more summary::after{content:"";width:.45rem;height:.45rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.story-more[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+.story-more summary:hover{background:var(--paper)}
+.story-more summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.story-more .less,.story-more[open] .more{display:none}
+.story-more[open] .less{display:inline}
+.story-more[open] > .story-text{margin-top:2rem}
+.chapters{list-style:none;margin:2.5rem 0 0;padding:0 0 0 1.75rem;position:relative;display:grid;gap:2.5rem;max-width:calc(var(--measure) + 1.75rem)}
+.chapters::before{content:"";position:absolute;left:.38rem;top:.5rem;bottom:.5rem;width:1.5px;background:var(--rule)}
+.chapter{position:relative;display:grid;gap:.8rem;min-width:0}
+.chapter .dot{position:absolute;left:-1.75rem;top:.3rem;width:.8rem;height:.8rem;border-radius:50%;box-shadow:0 0 0 4px var(--bg)}
+.chapter .when{font-family:var(--cond);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.chapter h3{font-size:1.75rem;line-height:1.1;margin-top:-.4rem}
+.chapter p:not(.when){color:var(--muted)}
+.story-quote{margin:.5rem 0;padding:0;font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;color:var(--ink);text-wrap:balance}
+.story-refs{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--rule-soft);max-width:46rem}
+.story-refs ol{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.story-refs li{font-size:.875rem;color:var(--muted);padding-left:1.5rem;text-indent:-1.5rem;overflow-wrap:anywhere}
+.story-refs a{color:inherit}
+.story-refs li:target{color:var(--ink)}
+
 /* About */
 .about p{color:var(--muted);max-width:var(--measure)}
 .about p + p{margin-top:1rem}
@@ -213,6 +242,7 @@ footer .legal{flex-basis:100%;font-size:.8rem}
       <li><a href="#method">Method</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#story">Story</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -407,6 +437,75 @@ footer .legal{flex-basis:100%;font-size:.8rem}
         <p>Tuned Echo Systems is led by Matt Crump, a cognitive psychologist who studies memory, learning, and skilled performance. He is a professor and chair of Psychology at Brooklyn College, CUNY, and has built open software for academic work since 2012: R packages, open textbooks, web-based experiments, and department tools.</p>
         <p>He runs an academic department, so he knows the problems of budgets, assessment, personnel review, and accreditation from the inside rather than as a vendor. Tuned Echo builds with AI coding tools under human direction, which is why prototypes arrive in weeks rather than months, and it teaches that method to clients.</p>
     </div>
+  </section>
+
+  <div class="wrap"><div class="rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+
+  <section id="story" class="wrap story">
+    <p class="eyebrow">The story</p>
+    <h2>Where the name comes from.</h2>
+    <div class="story-text">
+      <p>Matt Crump is a computational cognitive psychologist who studies how people learn and remember. Tuned Echo is a concept from instance theories of memory that explain how people store and retrieve the details of specific experiences. In those theories, the details of a present moment or situation act as a cue to memory. Memory is composed of traces that store the details of prior experiences. These traces are retrieved by a cue-driven similarity process. A current pattern of experience activates stored traces as a function of similarity. In this way, memory retrieves an echo of past experiences that combines the details of similar memories. In Douglas Hintzman's Minerva II model of memory <a class="cite" href="#ref-hintzman-1984">(Hintzman, 1984)</a>, there is a tuning parameter (tau) that controls the similarity gradient during retrieval, which determines whether the echo retrieves more specific single traces, or more general collections of similar traces. Readers interested in instance theory concepts are referred to <a class="cite" href="#ref-jamieson-2022">Jamieson et al. (2022)</a>.</p>
+    </div>
+    <details class="story-more">
+      <summary><span class="more">Read the full story</span><span class="less">Close the story</span></summary>
+      <div class="story-text">
+        <p>The concepts and methods I use throughout my research program blend together to support the applied work and mission of Tuned Echo Systems. Here are a few moments that help construct the story.</p>
+      </div>
+      <ol class="chapters">
+        <li class="chapter">
+          <span class="dot" style="background:var(--pink)" aria-hidden="true"></span>
+          <p class="when">Before November 2022</p>
+          <h3>Semantic Librarian</h3>
+            <p>The semantic librarian <a class="cite" href="#ref-aujla-2019">(Aujla et al., 2019)</a> project combined my interests in computational modeling of learning and memory with applied technologies. The semantic librarian was a project combining computational models of semantic knowledge (BEAGLE; <a class="cite" href="#ref-jones-2007">Jones &amp; Mewhort, 2007</a>) and memory retrieval into a "boutique" database and search engine for visualizing and exploring document similarities across a large corpus of text, including abstracts from APA papers, and we deployed this to a few conference proceedings as well. I coded the Semantic Librarian in R in 2019 and the code base is available to anyone from GitHub.</p>
+            <p>As an aside, as one way to demonstrate the build-your-own software approach I am advocating with Tuned Echo Systems, I'm currently in the process of refurbishing the semantic librarian project. Link to those examples coming soon.</p>
+        </li>
+        <li class="chapter">
+          <span class="dot" style="background:var(--orange)" aria-hidden="true"></span>
+          <p class="when">Early OpenAI, 2022</p>
+          <h3>Spell Check/Sanity Check</h3>
+            <p>I signed up for a beta-testing account with OpenAI and was fiddling around with their tools before ChatGPT was released in November 2022. I had a background in creating LLMs for the purposes of testing theories of human cognition. It was very interesting to see similar tools being deployed to generate language based on a large corpus.</p>
+            <p>The generative tools at that time appeared to me to be somewhat interesting, and highly fallible toys. I wasn't able to code a whole online cognitive behavioral experiment that I would trust. But, I was getting decent results in helping me write function documentation for R libraries that I was writing.</p>
+            <p>I've written several free open-educational textbooks in my areas of expertise, and I wondered if I could build a spell-checker/grammar checker to help me with one of my typing foibles—writing sentences that sometimes miss out whole words. A regular spell-checker won't work because it won't find words that aren't there. I wrote an R package for this that worked pretty well. At that time, these tools required lots and lots of checking.</p>
+        </li>
+        <li class="chapter">
+          <span class="dot" style="background:var(--yellow)" aria-hidden="true"></span>
+          <p class="when">2024</p>
+          <h3>Department Chair</h3>
+            <p>In 2024, I put my regular duties as a professor on pause, and took on the role of department chair for a three year term. The psychology department at Brooklyn College of CUNY is one of the largest departments on campus, with about 1200 undergraduate majors, 150+ master's students, 35+ faculty and staff, and 65+ adjunct instructors and doctoral students. We are a large complex operation, and it is a great privilege for me to serve in this role and find ways to help us accomplish our mission. At the same time, I now have a hard earned lived experience navigating through very challenging systems and processes that complicate my daily administrative life, and make it difficult for myself, and my colleagues, to carry out our mission as a public institution.</p>
+            <p>I didn't bother with generative AI during most of this period because I was too busy.</p>
+        </li>
+        <li class="chapter">
+          <span class="dot" style="background:var(--green)" aria-hidden="true"></span>
+          <p class="when">Summer 2026</p>
+          <h3>Piano-tuning and Physical Resonance</h3>
+            <p>Over the summer in 2026 I had heard that Claude was getting much better at coding. I was also looking to develop a new course for psychology students about how to apply generative AI tools within the discipline of psychology. After all, I have some background using the tools, and can also connect them to a rich intellectual tradition within the cognitive sciences. However, I wasn't up-to-date. So, after some prompting from a colleague (Sam Ling at BU), I set out to try these tools again.</p>
+            <p>I was already planning a new line of research that I would explore after my chair term, which would involve training exercises to learn jazz chords on a piano. I wanted people on the internet to be able to hook up their midi keyboards and complete the experimental tasks through their web-browsers. I already knew how I would code most of the experiment, as I've been coding cognitive experiments for the web for over a decade <a class="cite" href="#ref-crump-2013">(Crump et al., 2013)</a>. But, I knew the midi library would take me a while to code (probably a month to figure out and implement given my other responsibilities.) I signed up for a free Claude account, described what I was planning to build in a short paragraph, and it created the entire website, with the experimental design, all of the data I would need recorded, and I could hook up my midi keyboard and everything worked. Of course, I would need to review the code and test everything.</p>
+            <p>I am a piano player, and my piano was in need of tuning. I'd taken an interest in techniques for piano tuning, and have all of the hardware I need to tune a piano, but I never went so far as to pay for professional grade software that I could run on my laptop to help me tune it. One of the neat things that professional software can do is measure the inharmonicity in each string that is unique to my piano, and then give precise guidance on stretch-tuning for equal-temperament that actually sounds right on my actual piano (and not just in general). This software can be expensive (up to $1,000). To my surprise, I was able to code a piano tuning application that runs on my Mac in a morning over coffee, then customize the app to my liking, and then I tuned my piano in the afternoon using the software. It would now be very easy to extend this app to cover the very wide range of techniques and methods for piano tuning covered by Owen <a class="cite" href="#ref-jorgensen-1991">Jorgensen (1991)</a>.</p>
+            <p>There is another connection to Tuned Echo Systems worth mentioning now. One of the earliest metaphors for instance theories of memory is from Richard <a class="cite" href="#ref-semon-1921">Semon (1921)</a>, who described memory retrieval in terms of physical resonance, just like a piano. For example, consider that the strings of a piano are like individual stored memories, with different but similar characteristics. Striking a note such as middle C is like cueing memory with a particular pattern. When you strike a note on the piano the hammer hits the target string and the string vibrates and rings out. At the same time, a physical process of sympathetic resonance also begins to sound. The vibrating string causes other strings tuned to similar frequencies to ring out as well. Striking a middle C causes the other Cs to ring out, and also the fifths to sound, albeit somewhat quieter. In this way, striking a well-tuned note causes a chorus of echoes to sing from the piano.</p>
+            <p>When I extend these ideas to working in a complex organization like a university department, I find that our piano is not well-tuned. We have lots of individual strings (I'm thinking software systems, internal processes, governance structures, etc.) that we struggle to tune, and our ability to hear the public mission sing through well-coordinated systems is compromised.</p>
+            <blockquote class="story-quote">In this way, striking a well-tuned note causes a chorus of echoes to sing from the piano.</blockquote>
+        </li>
+        <li class="chapter">
+          <span class="dot" style="background:var(--blue)" aria-hidden="true"></span>
+          <p class="when">Now</p>
+          <h3>Let's build capacity to tune our own systems</h3>
+            <p>Since my piano-app building experiment, I have built several tools that will be useful to my own department, and hopefully to our college. There is a larger opportunity here to train our students and ourselves in these methods, so that we can solve our own problems with tools that meet our local custom needs.</p>
+        </li>
+      </ol>
+      <div class="story-refs">
+        <p class="eyebrow">References</p>
+        <ol>
+          <li id="ref-aujla-2019">Aujla, H., Crump, M. J. C., Cook, M. T., &amp; Jamieson, R. K. (2019). The Semantic Librarian: A search engine built from vector-space models of semantics. <em>Behavior Research Methods</em>, <em>51</em>(6), 2405–2418. <a href="https://doi.org/10.3758/s13428-019-01268-4">https://doi.org/10.3758/s13428-019-01268-4</a></li>
+          <li id="ref-crump-2013">Crump, M. J. C., McDonnell, J. V., &amp; Gureckis, T. M. (2013). Evaluating Amazon's Mechanical Turk as a tool for experimental behavioral research. <em>PLoS ONE</em>, <em>8</em>(3), e57410. <a href="https://doi.org/10.1371/journal.pone.0057410">https://doi.org/10.1371/journal.pone.0057410</a></li>
+          <li id="ref-hintzman-1984">Hintzman, D. L. (1984). MINERVA 2: A simulation model of human memory. <em>Behavior Research Methods, Instruments, &amp; Computers</em>, <em>16</em>(2), 96–101. <a href="https://doi.org/10.3758/BF03202365">https://doi.org/10.3758/BF03202365</a></li>
+          <li id="ref-jamieson-2022">Jamieson, R. K., Johns, B. T., Vokey, J. R., &amp; Jones, M. N. (2022). Instance theory as a domain-general framework for cognitive psychology. <em>Nature Reviews Psychology</em>, <em>1</em>, 174–183. <a href="https://doi.org/10.1038/s44159-022-00025-3">https://doi.org/10.1038/s44159-022-00025-3</a></li>
+          <li id="ref-jones-2007">Jones, M. N., &amp; Mewhort, D. J. K. (2007). Representing word meaning and order information in a composite holographic lexicon. <em>Psychological Review</em>, <em>114</em>(1), 1–37. <a href="https://doi.org/10.1037/0033-295X.114.1.1">https://doi.org/10.1037/0033-295X.114.1.1</a></li>
+          <li id="ref-jorgensen-1991">Jorgensen, O. H. (1991). <em>Tuning: Containing the perfection of eighteenth-century temperament, the lost art of nineteenth-century temperament, and the science of equal temperament</em>. Michigan State University Press.</li>
+          <li id="ref-semon-1921">Semon, R. (1921). <em>The mneme</em>. George Allen &amp; Unwin.</li>
+        </ol>
+      </div>
+    </details>
   </section>
 
   <section id="contact" class="contact">
