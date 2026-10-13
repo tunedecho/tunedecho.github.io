@@ -5,7 +5,7 @@ Website for Tuned Echo Systems LLC. "Tuning your systems to echo your mission"
 ## Layout
 
 - `index.html`: the whole site, one self-contained page. Fonts load from Google Fonts; everything else is inline.
-- `assets/seal.svg`: the seal, redrawn as vector art. The same drawing is inlined in `index.html` so it takes the page's text color.
+- `assets/seal.svg`: the seal, redrawn as vector art. An animated copy is inlined in the hero of `index.html`: the fork is struck on page load and every 15 seconds, and a city skyline lights up behind it. Visitors who prefer reduced motion see the seal still.
 - `assets/reference-wordmark.png`, `assets/reference-seal.png`: the original logo concepts.
 - `.github/workflows/deploy.yml`: deploys the repository root to GitHub Pages on every push to `main`.
 

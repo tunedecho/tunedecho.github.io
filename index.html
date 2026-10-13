@@ -48,9 +48,47 @@ header{padding-block:1.5rem}
 .nav a:not(.brand):hover{color:var(--ink)}
 
 /* Hero */
-.hero{padding-block:clamp(3rem,9vw,7rem) clamp(3rem,7vw,5rem)}
-.hero .wm-text{font-size:clamp(3.6rem,11vw,8.5rem)}
+.hero{padding-block:clamp(3rem,9vw,7rem) clamp(3rem,7vw,5rem);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero-text{min-width:0;position:relative;z-index:1}
+.hero .wm-text{font-size:clamp(3.4rem,9vw,8rem)}
 .hero .wordmark{max-width:100%}
+@media (max-width:48rem){ .hero-grid{grid-template-columns:1fr} .hero-seal{order:-1;width:9.5rem} }
+
+/* Animated seal: the fork is struck, the city behind it answers */
+.hero-seal{position:relative;width:clamp(13rem,24vw,19rem);aspect-ratio:1;max-width:100%}
+.hero-seal .seal{position:relative;width:100%;height:auto;display:block;color:var(--ink);overflow:visible}
+.hero-seal .skyline{position:absolute;left:50%;top:50%;width:190%;height:130%;transform:translate(-50%,-50%);opacity:0;color:var(--ink);pointer-events:none;
+  -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent)}
+.seal .tine-l,.seal .tine-r{transform-box:view-box;transform-origin:200px 220px}
+.seal .fork,.seal .ring-outer,.seal .ripple,.seal .wave{transform-box:view-box;transform-origin:200px 200px}
+.seal .spark{transform-box:view-box;transform-origin:200px 284px;opacity:0}
+.seal .ripple{opacity:0}
+.struck .skyline{animation:te-layer 3.4s ease-in-out .2s both}
+.struck .seal .fork{animation:te-jolt .22s ease-out both}
+.struck .seal .tine-l{animation:te-tineL 1.7s linear both}
+.struck .seal .tine-r{animation:te-tineR 1.7s linear both}
+.struck .seal .wave{animation:te-wave 1.8s ease-out both}
+.struck .seal .wave-r{animation-name:te-waveR}
+.struck .seal .ring-outer{animation:te-ring .55s ease-out both}
+.struck .seal .ripple{animation:te-ripple 2s ease-out both;animation-delay:calc(var(--i) * .24s)}
+.struck .seal .spark{animation:te-spark .5s ease-out both}
+.skyline .bldg{transform-box:fill-box;transform-origin:bottom center;transform:translateY(10px) scaleY(.96)}
+.struck .skyline .bldg{animation:te-rise .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d)}
+.skyline .lit{opacity:0}
+.struck .skyline .lit{animation:te-light 2.1s ease-out both;animation-delay:var(--d)}
+@keyframes te-layer{0%{opacity:0}16%{opacity:1}72%{opacity:1}100%{opacity:0}}
+@keyframes te-jolt{0%{transform:translateY(0)}35%{transform:translateY(4px)}100%{transform:translateY(0)}}
+@keyframes te-wave{0%{transform:translateX(0);opacity:1}12%{transform:translateX(-5px);opacity:.25}24%{transform:translateX(0);opacity:1}36%{transform:translateX(-4px);opacity:.35}48%{transform:translateX(0);opacity:1}62%{transform:translateX(-2px);opacity:.6}100%{transform:translateX(0);opacity:1}}
+@keyframes te-waveR{0%{transform:translateX(0);opacity:1}12%{transform:translateX(5px);opacity:.25}24%{transform:translateX(0);opacity:1}36%{transform:translateX(4px);opacity:.35}48%{transform:translateX(0);opacity:1}62%{transform:translateX(2px);opacity:.6}100%{transform:translateX(0);opacity:1}}
+@keyframes te-ring{0%{transform:scale(1)}40%{transform:scale(1.025)}100%{transform:scale(1)}}
+@keyframes te-ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.6);opacity:0}}
+@keyframes te-spark{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@keyframes te-rise{0%{transform:translateY(10px) scaleY(.96)}100%{transform:translateY(0) scaleY(1)}}
+@keyframes te-light{0%{opacity:0}14%{opacity:1}55%{opacity:1}100%{opacity:0}}
+@keyframes te-tineL{0.0%{transform:rotate(0.00deg)}3.8%{transform:rotate(-1.68deg)}7.7%{transform:rotate(1.49deg)}11.5%{transform:rotate(-1.31deg)}15.4%{transform:rotate(1.16deg)}19.2%{transform:rotate(-1.03deg)}23.1%{transform:rotate(0.91deg)}26.9%{transform:rotate(-0.80deg)}30.8%{transform:rotate(0.71deg)}34.6%{transform:rotate(-0.63deg)}38.5%{transform:rotate(0.55deg)}42.3%{transform:rotate(-0.49deg)}46.2%{transform:rotate(0.43deg)}50.0%{transform:rotate(-0.38deg)}53.8%{transform:rotate(0.34deg)}57.7%{transform:rotate(-0.30deg)}61.5%{transform:rotate(0.27deg)}65.4%{transform:rotate(-0.23deg)}69.2%{transform:rotate(0.21deg)}73.1%{transform:rotate(-0.18deg)}76.9%{transform:rotate(0.16deg)}80.8%{transform:rotate(-0.14deg)}84.6%{transform:rotate(0.13deg)}88.5%{transform:rotate(-0.11deg)}92.3%{transform:rotate(0.10deg)}96.2%{transform:rotate(-0.09deg)}100.0%{transform:rotate(0.00deg)}}
+@keyframes te-tineR{0.0%{transform:rotate(0.00deg)}3.8%{transform:rotate(1.68deg)}7.7%{transform:rotate(-1.49deg)}11.5%{transform:rotate(1.31deg)}15.4%{transform:rotate(-1.16deg)}19.2%{transform:rotate(1.03deg)}23.1%{transform:rotate(-0.91deg)}26.9%{transform:rotate(0.80deg)}30.8%{transform:rotate(-0.71deg)}34.6%{transform:rotate(0.63deg)}38.5%{transform:rotate(-0.55deg)}42.3%{transform:rotate(0.49deg)}46.2%{transform:rotate(-0.43deg)}50.0%{transform:rotate(0.38deg)}53.8%{transform:rotate(-0.34deg)}57.7%{transform:rotate(0.30deg)}61.5%{transform:rotate(-0.27deg)}65.4%{transform:rotate(0.23deg)}69.2%{transform:rotate(-0.21deg)}73.1%{transform:rotate(0.18deg)}76.9%{transform:rotate(-0.16deg)}80.8%{transform:rotate(0.14deg)}84.6%{transform:rotate(-0.13deg)}88.5%{transform:rotate(0.11deg)}92.3%{transform:rotate(-0.10deg)}96.2%{transform:rotate(0.09deg)}100.0%{transform:rotate(0.00deg)}}
+@media (prefers-reduced-motion: reduce){ .struck .skyline,.struck .seal *,.struck .skyline *{animation:none !important} }
 .tagline{font-size:clamp(1.35rem,2.6vw,1.9rem);font-weight:500;color:var(--text);margin-top:2.25rem;max-width:34ch;line-height:1.3;text-wrap:balance}
 .lede{color:var(--muted);max-width:var(--measure);margin-top:1.25rem}
 .cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.25rem}
@@ -96,11 +134,8 @@ h3{font-size:1.75rem;line-height:1.1}
 .soon p{color:var(--muted)}
 
 /* About */
-.about{display:grid;grid-template-columns:minmax(10rem,16rem) 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
-.about .seal{width:100%;max-width:16rem;color:var(--ink)}
 .about p{color:var(--muted);max-width:var(--measure)}
 .about p + p{margin-top:1rem}
-@media (max-width:40rem){ .about{grid-template-columns:1fr} .about .seal{max-width:11rem} }
 
 /* Contact + footer */
 .contact{background:var(--paper);border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
@@ -126,7 +161,9 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
 </header>
 
 <main id="top">
-  <section class="hero wrap">
+  <section class="hero">
+   <div class="wrap hero-grid">
+    <div class="hero-text">
     <h1 class="wordmark"><span class="wm-text">Tuned <em>Echo</em></span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></h1>
     <p class="tagline">Tuning your systems to echo your mission</p>
     <p class="lede">Tuned Echo Systems builds mission-fit software for universities, publishers, and research organizations, and teaches the methods to build it yourself. Brooklyn, New York.</p>
@@ -134,6 +171,41 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
       <a class="btn primary" href="#contact">Start a conversation</a>
       <a class="btn ghost" href="#work">See the work</a>
     </div>
+    </div>
+    <div class="hero-seal" id="heroSeal">
+      <svg class="skyline" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
+      <svg class="seal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="sealTitle">
+        <title id="sealTitle">Tuned Echo Systems seal: a tuning fork ringed by the words Tuned Echo Systems, Mission-built software, Brooklyn, NY</title>
+        <g aria-hidden="true">
+          <circle class="ripple" style="--i:0" cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle class="ripple" style="--i:1" cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle class="ripple" style="--i:2" cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </g>
+        <circle class="seal-disc" cx="200" cy="200" r="192" style="fill:var(--bg)"/>
+      <circle class="ring-outer" cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="7"/>
+        <circle cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="5"/>
+        <defs><path id="sealArc" d="M200,200 m-158,0 a158,158 0 1,1 316,0 a158,158 0 1,1 -316,0"/></defs>
+        <text font-family="Oswald, 'Arial Narrow', 'Helvetica Neue', sans-serif" font-size="25" font-weight="500" letter-spacing="3" fill="currentColor">
+          <textPath href="#sealArc" startOffset="0" textLength="990" lengthAdjust="spacing">· TUNED ECHO SYSTEMS · MISSION-BUILT SOFTWARE · BROOKLYN, NY </textPath>
+        </text>
+        <g class="fork">
+          <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round">
+            <path class="tine-l" d="M172,120 V192 a28,28 0 0 0 28,28"/>
+            <path class="tine-r" d="M228,120 V192 a28,28 0 0 1 -28,28"/>
+            <path d="M200,218 V282"/>
+          </g>
+          <circle cx="200" cy="284" r="11" fill="currentColor"/>
+        </g>
+        <circle class="spark" cx="200" cy="284" r="14" fill="none" stroke="#e2b93b" stroke-width="3" aria-hidden="true"/>
+        <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round">
+          <path class="wave" d="M150,150 c-12,16 -12,32 0,48 c12,16 12,32 0,48"/>
+          <path class="wave" d="M130,142 c-14,20 -14,40 0,60 c14,20 14,40 0,60"/>
+          <path class="wave wave-r" d="M250,150 c12,16 12,32 0,48 c-12,16 -12,32 0,48"/>
+          <path class="wave wave-r" d="M270,142 c14,20 14,40 0,60 c-14,20 -14,40 0,60"/>
+        </g>
+      </svg>
+    </div>
+   </div>
   </section>
 
   <div class="wrap"><div class="rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
@@ -196,33 +268,10 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
 
   <section id="about" class="wrap">
     <div class="about">
-      <svg class="seal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="sealTitle">
-  <title id="sealTitle">Tuned Echo Systems seal: a tuning fork ringed by the words Tuned Echo Systems, Mission-built software, Brooklyn, NY</title>
-  <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-width="7"/>
-  <circle cx="200" cy="200" r="128" fill="none" stroke="currentColor" stroke-width="5"/>
-  <defs><path id="sealArc" d="M200,200 m-158,0 a158,158 0 1,1 316,0 a158,158 0 1,1 -316,0"/></defs>
-  <text font-family="Oswald, 'Arial Narrow', 'Helvetica Neue', sans-serif" font-size="25" font-weight="500" letter-spacing="3" fill="currentColor">
-    <textPath href="#sealArc" startOffset="0" textLength="990" lengthAdjust="spacing">· TUNED ECHO SYSTEMS · MISSION-BUILT SOFTWARE · BROOKLYN, NY </textPath>
-  </text>
-  <g fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round">
-    <path d="M172,120 V192 a28,28 0 0 0 56,0 V120"/>
-    <path d="M200,220 V282"/>
-  </g>
-  <circle cx="200" cy="284" r="11" fill="currentColor"/>
-  <g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round">
-    <path d="M150,150 c-12,16 -12,32 0,48 c12,16 12,32 0,48"/>
-    <path d="M130,142 c-14,20 -14,40 0,60 c14,20 14,40 0,60"/>
-    <path d="M250,150 c12,16 12,32 0,48 c-12,16 -12,32 0,48"/>
-    <path d="M270,142 c14,20 14,40 0,60 c-14,20 -14,40 0,60"/>
-  </g>
-</svg>
-
-      <div>
         <p class="eyebrow">About</p>
         <h2>Our systems can be for us by us.</h2>
         <p>Tuned Echo Systems is led by Matt Crump, a cognitive psychologist who studies memory, learning, and skilled performance. He is a professor and chair of Psychology at Brooklyn College, CUNY, and has built open software for academic work since 2012: R packages, open textbooks, web-based experiments, and department tools.</p>
         <p>He runs an academic department, so he knows the problems of budgets, assessment, personnel review, and accreditation from the inside rather than as a vendor. Tuned Echo builds with AI coding tools under human direction, which is why prototypes arrive in weeks rather than months, and it teaches that method to clients.</p>
-      </div>
     </div>
   </section>
 
@@ -238,5 +287,35 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
   <span>© 2026 Tuned Echo Systems LLC</span>
   <span>Tuning your systems to echo your mission</span>
 </footer>
+<script>
+(function(){
+  var box=document.getElementById('heroSeal');
+  if(!box||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var svg=box.querySelector('.skyline'),NS='http://www.w3.org/2000/svg';
+  var C=['#d9738f','#e8915a','#e2b93b','#4fae8f','#4f8fcf','#8a6fc9'],CX=320,CY=200,seed=7;
+  function r(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function dist(x,y){return Math.hypot(x-CX,y-CY);}
+  var x=-6;
+  while(x<646){
+    var w=16+Math.floor(r()*28),h=70+Math.floor(r()*250),col=C[Math.floor(r()*6)];
+    var b=el('g',{'class':'bldg'});b.style.setProperty('--d',(dist(x+w/2,400-h/2)/900).toFixed(2)+'s');
+    b.appendChild(el('rect',{x:x,y:400-h,width:w,height:h,fill:'currentColor',opacity:.08}));
+    for(var wy=400-h+8;wy<392;wy+=12){for(var wx=x+5;wx<x+w-4;wx+=8){if(r()<.55){
+      var win=el('rect',{x:wx,y:wy,width:3.5,height:5,fill:col,'class':'lit'});
+      win.style.setProperty('--d',(.25+dist(wx,wy)/460+r()*.12).toFixed(2)+'s');b.appendChild(win);}}}
+    svg.appendChild(b);x+=w+2+Math.floor(r()*6);
+  }
+  var visible=true,timer=null;
+  function strike(){
+    if(!visible||document.hidden)return;
+    box.classList.remove('struck');void box.offsetWidth;box.classList.add('struck');
+    clearTimeout(timer);timer=setTimeout(function(){box.classList.remove('struck');},3900);
+  }
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;}).observe(box);}
+  setTimeout(strike,900);
+  setInterval(strike,15000);
+})();
+</script>
 </body>
 </html>
