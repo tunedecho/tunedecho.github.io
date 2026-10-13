@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Oswald:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
 <style>
-/* Variation A, "Letterhead": cream page, wordmark-first, the seven bars as the only ornament. */
+/* Letterhead: cream page, wordmark-first, the seven bars as the only ornament. */
 :root{
   --bg:#f6f2ea; --paper:#fbf7ef; --ink:#1f2329; --text:#2b2f36; --muted:#53575d; --rule:#d8d2c6; --rule-soft:#e9e4da;
   --pink:#d9738f; --orange:#e8915a; --yellow:#e2b93b; --green:#4fae8f; --blue:#4f8fcf; --purple:#8a6fc9;
@@ -87,13 +87,13 @@ h3{font-size:1.75rem;line-height:1.1}
 .principles strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--ink);line-height:1.15}
 .principles i{display:block;width:.5rem;height:1.25rem;border-radius:999px;margin-top:.15rem}
 
-/* Work */
-.work{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--rule)}
-.work li{display:grid;grid-template-columns:minmax(9rem,14rem) 1fr;gap:1rem 2rem;padding:1.5rem 0;border-bottom:1px solid var(--rule-soft)}
-.work .sector{font-family:var(--cond);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:.5rem}
-.work h3{font-size:1.5rem}
-.work p{margin-top:.4rem;color:var(--muted);max-width:var(--measure)}
-@media (max-width:40rem){ .work li{grid-template-columns:1fr} .work .sector{padding-top:0} }
+/* Development banner */
+.banner{background:var(--ink);color:var(--bg);font-family:var(--cond);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.55rem clamp(1rem,4vw,2.5rem)}
+
+/* Coming soon notice */
+.soon{border:1.5px dashed var(--rule);background:var(--paper);padding:1.5rem 1.75rem;max-width:var(--measure);display:grid;gap:.5rem}
+.soon-label{font-family:var(--cond);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.soon p{color:var(--muted)}
 
 /* About */
 .about{display:grid;grid-template-columns:minmax(10rem,16rem) 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
@@ -112,6 +112,7 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
 </style>
 </head>
 <body>
+<div class="banner" role="status">This site is under development. Content and design are drafts and will change.</div>
 <header class="wrap">
   <nav class="nav" aria-label="Primary">
     <a class="brand" href="#top">Tuned <em>Echo</em></a>
@@ -156,10 +157,10 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
 
   <section id="method" class="wrap">
     <p class="eyebrow">How we work</p>
-    <h2>Probe, trace, tune, echo.</h2>
+    <h2>Listen, trace, tune, echo.</h2>
     <p class="intro">Every engagement follows the same four movements, whether we are building the system or teaching your team to build it.</p>
     <div class="steps">
-      <div class="step"><h3><i class="dot" style="background:var(--pink)"></i>Probe</h3><p>Learn how the work actually happens. We start from your real structure, your catalog, your departments, your workflow, and invent only the sensitive particulars.</p></div>
+      <div class="step"><h3><i class="dot" style="background:var(--pink)"></i>Listen</h3><p>Learn how the work actually happens. We start from your real structure, your catalog, your departments, your workflow, and invent only the sensitive particulars.</p></div>
       <div class="step"><h3><i class="dot" style="background:var(--yellow)"></i>Trace</h3><p>Write the plan as the record. Goals, assumptions, open questions, and a decision log live in a plain file that everyone can read.</p></div>
       <div class="step"><h3><i class="dot" style="background:var(--green)"></i>Tune</h3><p>Build demo-first. Seeded data, one-click role switching, and a ten-minute walkthrough for the decision-maker, then adjust against real use.</p></div>
       <div class="step"><h3><i class="dot" style="background:var(--blue)"></i>Echo</h3><p>Ship a system that reflects the mission. Every figure shows its arithmetic, every page meets accessibility standards, and the code stays open.</p></div>
@@ -185,14 +186,11 @@ footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;j
   <section id="work" class="wrap">
     <p class="eyebrow">Working examples</p>
     <h2>Prototypes that show the institution to itself.</h2>
-    <p class="intro">Each example is a working system with seeded demo data, role switching for live walkthroughs, and a scripted ten-minute demo for a named decision-maker.</p>
-    <ul class="work">
-      <li><span class="sector">Higher education</span><div><h3>Assessment Hub</h3><p>Institution-wide learning outcomes assessment: curriculum maps with live gap warnings, annual reports with review workflow, and a printable accreditation evidence summary.</p></div></li>
-      <li><span class="sector">Higher education</span><div><h3>Academic Budget Hub</h3><p>Department, school, and institution budgets with the arithmetic behind every figure, plus a policy lab for comparing budget models before adopting them.</p></div></li>
-      <li><span class="sector">Higher education</span><div><h3>Teaching Observation Hub</h3><p>Peer teaching observations for an entire college: automatic pairings from the term schedule, forms, acknowledgments, and completion tracking.</p></div></li>
-      <li><span class="sector">Publishing</span><div><h3>Proceedings Desk</h3><p>A submission and tracking system for conference proceedings, designed to replace a vendor platform with fewer screens, bulk actions, and integrity checks before publication.</p></div></li>
-      <li><span class="sector">Research</span><div><h3>Semantic Librarian</h3><p>A meaning-based search library built from any document set. Documents, authors, and years share one semantic space, exported as a static web app.</p></div></li>
-    </ul>
+    <p class="intro">Working demonstrations in higher education, publishing, and research are being prepared for public release. Each will be a live system with seeded demo data, role switching, and a scripted ten-minute walkthrough.</p>
+    <div class="soon">
+      <span class="soon-label">Coming soon</span>
+      <p>Public demos are on the way. In the meantime, ask for a walkthrough and we will show you a working system for a setting like yours.</p>
+    </div>
   </section>
 
   <div class="wrap"><div class="rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
