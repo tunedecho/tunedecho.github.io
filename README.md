@@ -1,6 +1,6 @@
 # tunedecho.github.io
 
-Website for Tuned Echo Systems LLC. "We tune your systems until they echo your mission."
+Website for Tuned Echo Systems LLC. "Tuning your systems until they echo your mission"
 
 ## Layout
 
