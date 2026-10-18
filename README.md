@@ -18,3 +18,7 @@ In the repository settings, under Pages, set the source to "GitHub Actions". Aft
 ## Editing
 
 Open `index.html` in a browser to preview. Edit the text in place; the design tokens (colors, fonts) sit at the top of the `<style>` block.
+
+## Analytics
+
+Every page carries the Google Analytics tag (measurement ID `G-SLG3Z0KKWZ`) at the top of its `<head>`. Add the same snippet to any new page.
