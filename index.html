@@ -7,6 +7,15 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode: in the EEA, the UK and Switzerland, analytics cookies stay off until the visitor accepts.
+  // Google applies this by the visitor's location; elsewhere analytics runs normally.
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+    region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL',
+             'PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],
+    wait_for_update: 500
+  });
+  try { if (localStorage.getItem('te-consent') === 'granted') gtag('consent', 'update', { analytics_storage: 'granted' }); } catch (e) {}
   gtag('js', new Date());
 
   gtag('config', 'G-SLG3Z0KKWZ');
@@ -222,6 +231,17 @@ h3{font-size:1.75rem;line-height:1.1}
 .story-refs li{font-size:.875rem;color:var(--muted);padding-left:1.5rem;text-indent:-1.5rem;overflow-wrap:anywhere}
 .story-refs a{color:inherit}
 .story-refs li:target{color:var(--ink)}
+
+/* Cookie consent: shown only to visitors whose time zone is in Europe */
+.consent{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);border-top:1.5px solid var(--ink);padding:1rem clamp(1rem,4vw,2.5rem) calc(1rem + env(safe-area-inset-bottom, 0px))}
+.consent-inner{max-width:68rem;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap}
+.consent p{color:var(--text);font-size:.95rem;max-width:44rem;margin:0}
+.consent .actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.consent button,.consent-link{font-family:var(--cond);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:999px;border:1.5px solid var(--ink);cursor:pointer}
+.consent .accept{background:var(--ink);color:var(--bg)}
+.consent .decline{background:transparent;color:var(--ink)}
+.consent button:focus-visible,.consent-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.consent-link{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:.75rem}
 
 /* About */
 .about p{color:var(--muted);max-width:var(--measure)}
@@ -522,7 +542,7 @@ footer .legal{flex-basis:100%;font-size:.8rem}
 <footer class="wrap">
   <span>© 2026 Tuned Echo Systems LLC</span>
   <span>Tuning your systems to echo your mission</span>
-  <p class="legal">Tuned Echo is a trademark of Tuned Echo Systems LLC.</p>
+  <p class="legal">Tuned Echo is a trademark of Tuned Echo Systems LLC. <button type="button" class="consent-link" id="consentSettings" hidden>Cookie settings</button></p>
 </footer>
 <script src="assets/te-geo.js" defer></script>
 <script src="assets/te-flight.js" defer></script>
@@ -567,6 +587,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   select(tabs[0], false);
+})();
+</script>
+<script>
+/* Cookie consent banner. Shown only when the browser's time zone is in Europe (no location lookup is made).
+   Google's region-based consent defaults in the head keep analytics cookies off in the EEA, UK and
+   Switzerland until the visitor accepts, even if this guess misses. */
+(function () {
+  var KEY = 'te-consent', tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var european = /^Europe\//.test(tz) || /^(Atlantic\/(Reykjavik|Canary|Madeira|Azores|Faroe)|Arctic\/Longyearbyen)$/.test(tz);
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function clearGaCookies() {
+    var host = location.hostname, parts = host.split('.'), domains = ['', host];
+    if (parts.length > 1) domains.push('.' + parts.slice(-2).join('.'));
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (name === '_ga' || name.indexOf('_ga_') === 0) domains.forEach(function (d) {
+        document.cookie = name + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  }
+  var banner = null, settings = document.getElementById('consentSettings');
+  function choose(v) {
+    write(v);
+    if (window.gtag) gtag('consent', 'update', { analytics_storage: v === 'granted' ? 'granted' : 'denied' });
+    if (v !== 'granted') clearGaCookies();
+    if (banner) { banner.remove(); banner = null; }
+    if (settings) settings.hidden = false;
+  }
+  function show() {
+    if (banner) return;
+    banner = document.createElement('div');
+    banner.className = 'consent'; banner.setAttribute('role', 'region'); banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML = '<div class="consent-inner"><p>This site uses Google Analytics cookies to count visits and see which pages are read. Nothing is used for advertising. You can change your choice any time from the footer.</p>' +
+      '<div class="actions"><button type="button" class="accept">Accept</button><button type="button" class="decline">Decline</button></div></div>';
+    banner.querySelector('.accept').addEventListener('click', function () { choose('granted'); });
+    banner.querySelector('.decline').addEventListener('click', function () { choose('denied'); });
+    document.body.appendChild(banner);
+  }
+  var stored = read();
+  if (settings && (european || stored)) { settings.hidden = false; settings.addEventListener('click', show); }
+  if (european && !stored) show();
 })();
 </script>
 </body>

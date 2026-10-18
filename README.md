@@ -22,3 +22,5 @@ Open `index.html` in a browser to preview. Edit the text in place; the design to
 ## Analytics
 
 Every page carries the Google Analytics tag (measurement ID `G-SLG3Z0KKWZ`) at the top of its `<head>`. Add the same snippet to any new page.
+
+Consent works in two layers. Google Consent Mode defaults in the tag keep analytics cookies off for visitors in the EEA, the UK and Switzerland until they accept; Google applies this by the visitor's location. A banner at the bottom of the page asks those visitors to accept or decline. The banner appears only when the browser's time zone is in Europe, so no separate location lookup is made. The choice is stored in the browser, and a "Cookie settings" link in the footer reopens the banner. Any new page needs the same tag, banner script and footer link.
