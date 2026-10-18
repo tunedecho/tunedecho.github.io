@@ -252,6 +252,9 @@ h3{font-size:1.75rem;line-height:1.1}
 .contact .big{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ink);line-height:1.15;max-width:22ch}
 .contact .addr{margin-top:1.5rem;color:var(--muted)}
 .contact .addr b{font-weight:600;color:var(--ink)}
+.contact .addr a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+.contact .addr a:hover{text-decoration-color:var(--ink)}
+.contact .addr a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 footer{padding-block:2rem 3rem;font-size:.9rem;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 footer .legal{flex-basis:100%;font-size:.8rem}
 /* Trademark mark: hangs off the wordmark so the color bars keep the wordmark's width */
@@ -535,7 +538,7 @@ footer .legal{flex-basis:100%;font-size:.8rem}
   <section id="contact" class="contact">
     <div class="wrap">
       <p class="big">Learn how to build the systems you wish you had.</p>
-      <p class="addr"><b>Tuned Echo Systems LLC</b><br>Brooklyn, New York</p>
+      <p class="addr"><b>Tuned Echo Systems LLC</b><br>Brooklyn, New York<br><a href="mailto:info@tunedecho.com">info@tunedecho.com</a></p>
     </div>
   </section>
 </main>
