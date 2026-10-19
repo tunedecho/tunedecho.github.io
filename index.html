@@ -142,10 +142,16 @@ h3{font-size:1.75rem;line-height:1.1}
 /* Development banner */
 .banner{background:var(--ink);color:var(--bg);font-family:var(--cond);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.55rem clamp(1rem,4vw,2.5rem)}
 
-/* Coming soon notice */
-.soon{border:1.5px dashed var(--rule);background:var(--paper);padding:1.5rem 1.75rem;max-width:var(--measure);display:grid;gap:.5rem}
-.soon-label{font-family:var(--cond);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
-.soon p{color:var(--muted)}
+/* Link from Working examples to the Apps page */
+.apps-link{display:grid;gap:.6rem;max-width:var(--measure);padding:1.5rem 1.75rem;border:1.5px solid var(--ink);background:var(--paper);color:inherit;text-decoration:none;transition:background .2s}
+.apps-link:hover{background:var(--bg)}
+.apps-link:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.apps-link-label{font-family:var(--cond);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.apps-link-text{color:var(--text)}
+.apps-link-go{font-family:var(--cond);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.apps-link-go .arrow{display:inline-block;transition:transform .2s}
+.apps-link:hover .arrow{transform:translateX(4px)}
+@media (prefers-reduced-motion: reduce){ .apps-link,.apps-link .arrow{transition:none} }
 
 /* Riffing on the problem: one block, four takes, switched by tabs */
 .pb-turn{margin-top:clamp(2rem,5vw,3rem);display:grid;gap:.9rem;max-width:44rem}
@@ -449,11 +455,12 @@ footer .legal{flex-basis:100%;font-size:.8rem}
   <section id="work" class="wrap">
     <p class="eyebrow">Working examples</p>
     <h2>Prototypes that show the institution to itself.</h2>
-    <p class="intro">Working demonstrations in higher education, publishing, and research are being prepared for public release. Each will be a live system with seeded demo data, role switching, and a scripted ten-minute walkthrough.</p>
-    <div class="soon">
-      <span class="soon-label">Coming soon</span>
-      <p>Public demos are on the way. In the meantime, ask for a walkthrough and we will show you a working system for a setting like yours.</p>
-    </div>
+    <p class="intro">Tuned Echo Systems builds prototype software for colleges and universities: custom tools for the niche processes that enterprise platforms never reach, working in weeks.</p>
+    <a class="apps-link" href="/apps/">
+      <span class="apps-link-label">See it in practice</span>
+      <span class="apps-link-text">See examples on the Apps page: small, focused tools built the same way, each with its own guide, release notes and support.</span>
+      <span class="apps-link-go" aria-hidden="true">Visit the Apps page <span class="arrow">→</span></span>
+    </a>
   </section>
 
   <div class="wrap"><div class="rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
